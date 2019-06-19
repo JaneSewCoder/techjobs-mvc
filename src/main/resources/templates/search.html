@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments :: head">
 </head>
 <body>
@@ -38,7 +38,19 @@
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
 
+    <div th:fragment="list-jobs" th:if="${jobs}">
+        <h2 th:text="|${jobs.size()}  Result(s):|"> </h2>
+        <table th:each="jobs : ${jobs}" class="job-listing">
+            <tr th:each="jobItem : ${jobs}">
+            <td th:text="${jobItem.key}"> </td>
+                <td th:text="${jobItem.value}"></td>
+            </tr>
+        </table>
+    </div>
+
 </div>
+
+
 
 </body>
 </html>
